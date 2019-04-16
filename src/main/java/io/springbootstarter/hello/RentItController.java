@@ -1,5 +1,7 @@
 package io.springbootstarter.hello;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,30 +37,34 @@ public class RentItController {
 		System.out.println(obj.getEmailId());
 		System.out.println(obj.getPincode());
 		System.out.println(obj.getUserName());
-	
-		rentitRepo.save(obj);
+		String isRegistered = "";
+		RegisterUserBO registerObj = rentitRepo.save(obj);
+		if(null!=registerObj && !registerObj.equals("")) {
+			isRegistered="Registered Successfully";
+		}else {
+			isRegistered="Register Failed";
+		}
 
-		return "success Post";
+		return isRegistered;
 	}
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping(value="/hello",  produces = "application/json")
-	public String sayHi()
+	@RequestMapping(method=RequestMethod.POST,value="/validateLogin")
+	public String validateLogin(@RequestBody Request req)
 	{
-		Request req= new Request();
-		ObjectMapper mapper = new ObjectMapper();
-		req.setPlace("a");
-		req.setDate("b");
-		req.setTime("c");
-		System.out.println("inside hello");
-		String jsonInString=null;
-		try {
-			jsonInString = mapper.writeValueAsString(req);
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String str ="";
+		System.out.println(req.getLogin());
+		System.out.println(req.getPassword());
+		List<RegisterUserBO> regObj = (List<RegisterUserBO>) rentitRepo.findAll();
+		for (RegisterUserBO dbData : regObj) {
+			if(dbData.getMobileNumber().equals(req.getLogin())){
+				 str = "Login Successful";
+			}
+			
 		}
-		System.out.println("'"+jsonInString+"'");
-		return jsonInString;
+		if(!str.equals("Login Successful")) {
+			str = "Login Failure";
+		}
+		return str;
 	}
 	/* @RequestMapping("/")
 	    public String home() {

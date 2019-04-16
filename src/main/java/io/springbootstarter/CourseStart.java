@@ -45,7 +45,7 @@ public class CourseStart {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/registerUser").allowedOrigins("http://localhost:4200");
-                registry.addMapping("/hello").allowedOrigins("http://localhost:4200");
+                registry.addMapping("/validateLogin").allowedOrigins("http://localhost:4200");
             }
 
 			@Override

@@ -1,0 +1,12 @@
+JvmtiExport can_access_local_variables 1
+JvmtiExport can_hotswap_or_post_breakpoint 1
+JvmtiExport can_post_on_exceptions 1
+# 685 ciObject found
+instanceKlass org/springframework/util/StopWatch$TaskInfo
+instanceKlass org/springframework/boot/CommandLineRunner
+instanceKlass org/springframework/boot/ApplicationRunner
+instanceKlass org/springframework/util/ConcurrentReferenceHashMap$EntryIterator
+instanceKlass java/util/AbstractMap$1$1
+instanceKlass javax/servlet/SingleThreadModel
+instanceKlass javax/servlet/annotation/ServletSecurity
+instanceKlass javax/servlet/annotation/MultipartConfig

@@ -1,28 +1,20 @@
 package io.springbootstarter.topic;
 
 public class Request {
-	private String place;
-	private String date;
-	private String time;
-	public String getPlace() {
-		return place;
+	public String getLogin() {
+		return login;
 	}
-	public void setPlace(String place) {
-		this.place = place;
+	public void setLogin(String login) {
+		this.login = login;
 	}
-	public String getDate() {
-		return date;
+	public String getPassword() {
+		return password;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getTime() {
-		return time;
-	}
-	public void setTime(String time) {
-		this.time = time;
-	}
-	
+	private String login;
+	private String password;
 	
 
 }
